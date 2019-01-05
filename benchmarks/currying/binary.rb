@@ -22,6 +22,10 @@ Benchmark.ips do |x|
     curry_right_folded.call(source)
   end
 
+  x.report("currying binary (built-in)") do
+    source.curry
+  end
+
   x.compare!
 end
 

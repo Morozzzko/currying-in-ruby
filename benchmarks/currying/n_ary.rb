@@ -22,5 +22,9 @@ Benchmark.ips do |x|
     curry_right_folded.call(source)
   end
 
+  x.report("currying arity = 6 (built-in)") do
+    source.curry
+  end
+
   x.compare!
 end

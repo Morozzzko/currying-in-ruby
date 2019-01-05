@@ -18,14 +18,15 @@ I'll write benchmarks for that and check it out
 
 Benchmarks are located in [benchmarks/currying](benchmarks/currying). I tested a process of currying on two kinds of functions:
 
-* arity = 2, [Results](https://benchmark.fyi/35)
-* arity = 6, [Results](https://benchmark.fyi/36)
+* arity = 2, [Results](https://benchmark.fyi/3b)
+* arity = 6, [Results](https://benchmark.fyi/3d)
 
-Results show that result is pretty much similar and falls within an error, so the process of currying is equally performant.
+Results indicate that both currying methods are equally performant, and the built-in `#curry` is ~20% slower
+
 
 ## Applying
 
-* arity = 2, [Results](https://benchmark.fyi/37)
-* arity = 6, [Results](https://benchmark.fyi/38)
+* arity = 2, [Results](https://benchmark.fyi/39)
+* arity = 6, [Results](https://benchmark.fyi/3a)
 
-Same here, falls within error.
+Same here, falls within error. However, the built-in `#curry` method is less performant than the in-house version. Which is odd

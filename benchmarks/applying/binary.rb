@@ -15,6 +15,7 @@ Benchmark.ips do |x|
 
   curried_plain = curry_plain.call(source)
   curried_right_folded = curry_right_folded.call(source)
+  curried_ruby = source.curry
 
   x.report("applying curried binary (plain)") do
     curried_plain.call(2).call(3)
@@ -22,6 +23,10 @@ Benchmark.ips do |x|
 
   x.report("applying curried binary (right_folded)") do
     curried_right_folded.call(2).call(3)
+  end
+
+  x.report("applying curried binary (built-in)") do
+    curried_ruby.call(2).call(3)
   end
 
   x.compare!
