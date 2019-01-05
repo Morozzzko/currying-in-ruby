@@ -11,3 +11,16 @@ Two ways of currying:
 
 I'll write benchmarks for that and check it out
 
+
+# Benchmarks
+
+## Currying
+
+Benchmarks are located in [benchmarks/currying](benchmarks/currying). I tested a process of currying on two kinds of functions:
+
+* arity = 2, [Results](https://benchmark.fyi/35)
+* arity = 6, [Results](https://benchmark.fyi/36)
+
+Results show that result is pretty much similar and falls within an error, so the process of currying is equally performant.
+
+## Applying
