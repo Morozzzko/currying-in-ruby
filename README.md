@@ -24,3 +24,8 @@ Benchmarks are located in [benchmarks/currying](benchmarks/currying). I tested a
 Results show that result is pretty much similar and falls within an error, so the process of currying is equally performant.
 
 ## Applying
+
+* arity = 2, [Results](https://benchmark.fyi/37)
+* arity = 6, [Results](https://benchmark.fyi/38)
+
+Same here, falls within error.
