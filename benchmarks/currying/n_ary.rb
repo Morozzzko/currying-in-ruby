@@ -10,16 +10,21 @@ Benchmark.ips do |x|
 
   curry_dynamic = Curry::Dynamic.new
   curry_static = Curry::Static.new
+  curry_idiomatic = Curry::Idiomatic.new
 
-  source = ->(x, y, z, a, b, c) { x + y + z + a + b + c }
+  source = ->(x, y, z, a, b, c) { }
 
 
   x.report("currying arity = 6 (dynamic)") do
     curry_dynamic.call(source)
   end
 
-  x.report("currying arity = 6 (static") do
+  x.report("currying arity = 6 (static)") do
     curry_static.call(source)
+  end
+
+  x.report("currying arity = 6 (idiomatic)") do
+    curry_idiomatic.call(source)
   end
 
   x.report("currying arity = 6 (built-in)") do
