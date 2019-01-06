@@ -43,3 +43,18 @@ The results above indicate that performance of dynamic, static and idiomatic cur
 I still don't know why, and I'll have to try again after adding support for functions with variable arity.
 
 ## Applying
+
+Applying a binary functions is a bit different than applying higher-arity functions, so the benchmarks measure different use-cases.
+
+Since idiomatic currying enables us to pass multiple arguments for each call, I have to test multiple use-cases:
+
+* Applying arguments one-by-one
+* Applying arguments in two halves
+* Applying all arguments at once
+
+When we're talking about binary functions, the first two cases are the same, so I'm not testing them separately.
+
+[Benchmark results for arity = 2](https://benchmark.fyi/3h) indicate that built-in currying & partial application is still 25% slower than my custom static and dynamic versions. Idiomatic currying is even slower and it shows 36-40% penalty in performance.
+
+[Benchmarks for arity = 6](https://benchmark.fyi/3i) show a whole different result: while built-in benchmark is still ~25% slower than custom and dynamic versions, idiomatic currying shows a great increase in performance when you apply multiple arguments at once. When you apply half-by-half, you get almost 3x increase in performance. Full idiomatic application tops that, being 14 times faster than static and dynamic versions, and 20 times faster than built-in partial application.
+
