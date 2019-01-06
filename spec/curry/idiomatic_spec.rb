@@ -79,5 +79,9 @@ RSpec.describe Curry::Idiomatic do
     it "allows us to pass multiple arguments" do
       expect { curried.(1, 2) }.not_to raise_exception(ArgumentError)
     end
+
+    it "raises exception if we pass too many arguments" do
+      expect { curried.(1, 2, 3, 4, 5, 6, 7, 8) }.to raise_exception(ArgumentError)
+    end
   end
 end
