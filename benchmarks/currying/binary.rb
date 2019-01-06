@@ -2,6 +2,7 @@ require 'benchmark/ips'
 
 require_relative '../../lib/curry'
 require_relative '../../lib/curry/right_folded'
+require_relative '../../lib/curry/idiomatic'
 
 Benchmark.ips do |x|
   # Configure the number of seconds used during
