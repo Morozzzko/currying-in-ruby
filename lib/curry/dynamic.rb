@@ -1,5 +1,5 @@
-class Curry
-  class RightFolded
+module Curry
+  class Dynamic
     # Only works with functions with fixed number of arguments
     def call(fun)
       arity = real_arity(fun)

@@ -1,6 +1,6 @@
-require 'curry/right_folded'
+require 'curry/static'
 
-RSpec.describe Curry::RightFolded do
+RSpec.describe Curry::Static do
   subject(:curried) { described_class.new.call(input) }
 
   context 'nullary input' do

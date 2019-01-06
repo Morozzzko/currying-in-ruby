@@ -1,4 +1,4 @@
-class Curry
+module Curry
   class Idiomatic
     # Only works with functions with fixed number of arguments
     def call(fun)

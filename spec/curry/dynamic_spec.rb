@@ -1,6 +1,6 @@
-require 'curry'
+require 'curry/dynamic'
 
-RSpec.describe Curry do
+RSpec.describe Curry::Dynamic do
   subject(:curried) { described_class.new.call(input) }
 
   context 'nullary input' do
