@@ -1,32 +1,45 @@
 # Curry
 
-My attempt at writing my own currying in Ruby
+My attempt at writing custom `curry` function in Ruby.
 
-Currently it provides 2 ways of currying. I'm not sure about terminology so please write me an email with a better name.
+I've designed three ways to curry a function:
 
-Two ways of currying:
+* Dynamic
+* Static
+* Idiomatic
 
-* Plain, simple, and slow. Generates a new lambda until you can apply the function
-* Right-folded. Relatively threadsafe (not tested), a bit more performant
+Dynamic currying works from the leftmost argument, fixing arguments one-by-one and generating a new function after every call.
 
-I'll write benchmarks for that and check it out
+Static currying is the classical currying: it turns a N-ary function into N unary functions. Practically, it generates N lambdas, each of those fixes their own argument.
 
+Idiomatic currying gets its name because it works like Ruby's built-in currying. Unlike dynamic and static currying, which only allow us to pass only one argument at a time, idiomatic currying enables us to pass multiple arguments to the `#call`.
+
+# Not implemented
+
+I haven't implemented currying for procs with variable number of arguments (i.e. negative arity).
+
+Feel free to send PRs!
 
 # Benchmarks
 
+All benchmarks were run for functions of arity 2 and 6. Target function has no body to eliminate all calculation overhead.
+
+In those benchmarks, I compare peformance of 4 types of currying:
+
+* Static
+* Dynamic
+* Idiomatic
+* Built-in
+
 ## Currying
 
-Benchmarks are located in [benchmarks/currying](benchmarks/currying). I tested a process of currying on two kinds of functions:
+Currying is a process that takes some time, so I wanted to measure it.
 
-* arity = 2, [Results](https://benchmark.fyi/3b)
-* arity = 6, [Results](https://benchmark.fyi/3d)
+* [Results for arity = 2](https://benchmark.fyi/3f)
+* [Results for arity = 6](https://benchmark.fyi/3g)
 
-Results indicate that both currying methods are equally performant, and the built-in `#curry` is ~20% slower
+The results above indicate that performance of dynamic, static and idiomatic currying is virtually the same, as the difference falls within error and can be ignored. However, the built-in `#curry` method is 23% slower than custom methods.
 
+I still don't know why, and I'll have to try again after adding support for functions with variable arity.
 
 ## Applying
-
-* arity = 2, [Results](https://benchmark.fyi/39)
-* arity = 6, [Results](https://benchmark.fyi/3a)
-
-Same here, falls within error. However, the built-in `#curry` method is less performant than the in-house version. Which is odd
