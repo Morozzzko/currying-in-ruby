@@ -60,8 +60,8 @@ RSpec.describe Curry::Idiomatic do
 
     it 'returns the same value' do
       expect(
-        curried.(1).(2).(3).(4).(5).(6)
-      ).to eql(input.call(1, 2, 3, 4, 5, 6))
+        curried.("1").("2").("3").("4").("5").("6")
+      ).to eql(input.call("1", "2", "3", "4", "5", "6"))
     end
 
     it 'can be called with full list of parameters' do
