@@ -21,7 +21,13 @@ module Curry
 
     # FIXME: work with negative arity (= dynamic argument count)
     def real_arity(fun)
-      fun.arity
+      arity = fun.arity
+
+      if arity.negative?
+        -arity - 1
+      else
+        arity
+      end
     end
   end
 end

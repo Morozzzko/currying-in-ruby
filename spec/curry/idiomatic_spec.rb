@@ -23,6 +23,53 @@ RSpec.describe Curry::Idiomatic do
     end
   end
 
+  context 'input of dynamic (negative) arity' do
+    let(:input) {
+      ->(x, y, *z) { x + "^#{y} " + z.join('-') }
+    }
+
+    it 'returns a different function' do
+      expect(curried).not_to be(input)
+    end
+
+    it 'returns an multi-argument function' do
+      expect(curried.arity).to be(-1)
+    end
+
+    it 'returns an multi-argument function after partial application' do
+      expect(curried.(1).arity).to be(-1)
+    end
+
+    it 'can be applied with arguments' do
+      expect {
+        curried.("1").("2", "3")
+      }.not_to raise_exception
+    end
+
+    it 'can be applied without passing any arguments' do
+      expect {
+        curried.("1").("2")
+      }.not_to raise_exception
+    end
+
+    it 'returns the same value' do
+      expect(
+        curried.("1").("2", "3", "4")
+      ).to eql(input.call("1", "2", "3", "4"))
+    end
+
+    it 'can be called with full list of parameters' do
+      expect(
+        curried.call("1", "2", "3", "4", "5", "6")
+      ).to eql(input.call("1", "2", "3", "4", "5", "6"))
+    end
+
+
+    it "allows us to pass multiple arguments" do
+      expect { curried.(1, 2) }.not_to raise_exception(ArgumentError)
+    end
+  end
+
   context 'input of higher arity' do
     let(:input) {
       ->(x, y, z, a, b, c) { x + y + z + a + b + c }
